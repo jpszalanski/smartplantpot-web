@@ -1,0 +1,43 @@
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  plants: [Plant]
+}
+
+type Plant {
+  id: ID!
+  userID: ID!
+  name: String!
+  species: String
+  soilMoistureRange: Range
+  airHumidityRange: Range
+  lightRange: Range
+  temperatureRange: Range
+  recommendations: String
+  devices: [Device]
+}
+
+type Device{
+  id: ID!
+  plantID: ID!
+  type: String!
+  functionality: String!
+  sensorData: [SensorData]
+}
+
+type SensorData {
+  id: ID!
+  deviceID: ID!
+  timestamp: AWSDateTime!
+  soilMoisture: Float
+  airHumidity: Float
+  light: Float
+  temperature: Float
+  otherSensorData: String
+}
+
+type Range {
+  min: Float!
+  max: Float!
+}
